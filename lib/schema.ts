@@ -23,13 +23,13 @@ export function localBusinessSchema(): BusinessSchema {
 
   return {
     "@context": "https://schema.org",
-    "@type": ["CafeOrCoffeeShop", "Bakery"],
+    "@type": ["CafeOrCoffeeShop", "Bakery", "LocalBusiness"],
     name: BUSINESS.name,
     description: BUSINESS.description,
-    url: "https://cabritacafe.com.ar",
+    url: "https://cabritagaragecafe-web.vercel.app",
     telephone: BUSINESS.phone,
     email: "",
-    image: "https://cabritacafe.com.ar/og-image.jpg",
+    image: "https://cabritagaragecafe-web.vercel.app/og-image.jpg",
     address: {
       "@type": "PostalAddress",
       streetAddress: verifiedLocation.address,

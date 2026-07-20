@@ -33,12 +33,12 @@ export const metadata: Metadata = {
     "take away mendoza",
   ],
   authors: [{ name: "Cabrita Garage Café" }],
-  metadataBase: new URL("https://cabritacafe.com.ar"),
+  metadataBase: new URL("https://cabritagaragecafe-web.vercel.app"),
   openGraph: {
     title: "Cabrita Garage Café — Café de especialidad en el corazón de Mendoza",
     description:
       "Medialunas, chipás y café de especialidad recién hecho. Conocé el garage que enamora al centro de Mendoza.",
-    url: "https://cabritacafe.com.ar",
+    url: "https://cabritagaragecafe-web.vercel.app",
     siteName: "Cabrita Garage Café",
     locale: "es_AR",
     type: "website",
@@ -70,7 +70,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${fraunces.variable} ${dmSans.variable}`}>
       <head>
-        <link rel="canonical" href="https://cabritacafe.com.ar" />
+        <link rel="canonical" href="https://cabritagaragecafe-web.vercel.app" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

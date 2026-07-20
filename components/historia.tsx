@@ -48,7 +48,8 @@ export function Historia() {
                 y vuelve.
               </p>
               <p className="font-medium text-brown">
-                Cabrita al servicio de la comunidad mendocina. ☕🤎
+                Cabrita al servicio de la comunidad mendocina.{" "}
+                <span aria-hidden="true">☕🤎</span>
               </p>
             </SectionWrapper>
           </div>

@@ -1,4 +1,4 @@
-import { MapPin, Clock } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { LOCATIONS, SCHEDULE, BUSINESS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
 
@@ -67,15 +67,14 @@ export function Sucursales() {
                     Sucursal Beltrán
                   </h3>
                   <p className="text-sm text-iron/50">
-                    {LOCATIONS[1].address}
+                    Consultanos por WhatsApp para más info
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-sm">
-                <Clock size={14} className="text-mustard shrink-0" />
-                <span className="text-iron/60 italic">
-                  Horarios no disponibles — consultanos por{" "}
+              <div className="mt-5 p-4 rounded-xl bg-mustard/5 border border-mustard/10">
+                <p className="text-sm text-iron/60">
+                  Consultanos por{" "}
                   <a
                     href={`https://wa.me/542617176679`}
                     target="_blank"
@@ -83,37 +82,13 @@ export function Sucursales() {
                     className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
                   >
                     WhatsApp
-                  </a>
-                </span>
-              </div>
-
-              <div className="mt-5 p-4 rounded-xl bg-mustard/5 border border-mustard/10">
-                <p className="text-xs text-iron/50">
-                  ℹ️ Dirección exacta no verificada. Si conocés la dirección precisa,
-                  avisanos por Instagram o WhatsApp.
+                  </a>{" "}
+                  para horarios y más info.
                 </p>
               </div>
             </div>
           </SectionWrapper>
         </div>
-
-        <SectionWrapper delay={200} className="mt-8">
-          <div className="rounded-2xl overflow-hidden border border-cream-dark/60 bg-white aspect-[21/9] min-h-[240px] relative">
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-cream-dark/50 to-cream">
-              <MapPin size={32} className="text-mustard mb-3" />
-              <p className="font-serif text-lg text-brown">Av. Belgrano 1184, Mendoza</p>
-              <a
-                href={BUSINESS.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 text-sm text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
-              >
-                Ver en Google Maps
-              </a>
-              <p className="text-xs text-iron/40 mt-2">Mapa interactivo — placeholder</p>
-            </div>
-          </div>
-        </SectionWrapper>
       </div>
     </section>
   );

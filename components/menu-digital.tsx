@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { MENU_CATEGORIES } from "@/lib/data";
+import { ChevronDown, Tag } from "lucide-react";
+import { MENU_CATEGORIES, BUSINESS, PRICE_RANGE, PROMOS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
 
 export function MenuDigital() {
@@ -77,28 +77,53 @@ export function MenuDigital() {
             );
           })}
 
-          <div className="text-center pt-6">
-            <p className="text-sm text-iron/50">
-              Precios consultar. Escribinos por{" "}
-              <a
-                href={`https://wa.me/542617176679?text=${encodeURIComponent("¡Hola! Quería consultar por el menú y precios 🙌")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
-              >
-                WhatsApp
-              </a>{" "}
-              o pedí por{" "}
-              <a
-                href="https://pedidosya.com.ar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
-              >
-                PedidosYa
-              </a>
-              .
-            </p>
+          <div className="pt-8 space-y-6">
+            <div className="text-center">
+              <p className="text-sm text-iron/50">
+                Medialunas desde <span className="font-semibold text-brown">{PRICE_RANGE.medialunasDesde}</span>
+                {" · "}
+                Café desde <span className="font-semibold text-brown">{PRICE_RANGE.cafeDesde}</span>
+              </p>
+            </div>
+
+            <div className="bg-mustard/5 border border-mustard/10 rounded-xl p-5 md:p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Tag size={16} className="text-mustard" />
+                <span className="text-sm font-semibold text-brown uppercase tracking-wider">Promos</span>
+              </div>
+              <div className="space-y-3">
+                {PROMOS.map((promo) => (
+                  <div key={promo.name} className="flex justify-between items-center text-sm">
+                    <span className="text-iron/70">{promo.name}</span>
+                    <span className="font-semibold text-mustard">{promo.price}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center">
+              <p className="text-sm text-iron/50">
+                Escribinos por{" "}
+                <a
+                  href={`https://wa.me/542617176679?text=${encodeURIComponent("¡Hola! Quería consultar por el menú 🙌")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
+                >
+                  WhatsApp
+                </a>{" "}
+                o pedí por{" "}
+                <a
+                  href={BUSINESS.pedidosYaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
+                >
+                  PedidosYa
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </SectionWrapper>
       </div>

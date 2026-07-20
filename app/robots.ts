@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://cabritacafe.com.ar/sitemap.xml",
+    sitemap: "https://cabritagaragecafe-web.vercel.app/sitemap.xml",
   };
 }

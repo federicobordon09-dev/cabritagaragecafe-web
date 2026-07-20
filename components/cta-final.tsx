@@ -11,7 +11,7 @@ export function CtaFinal() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
         <SectionWrapper>
-          <span className="text-5xl md:text-6xl mb-6 block">🥐☕</span>
+          <span className="text-5xl md:text-6xl mb-6 block" aria-hidden="true">🥐☕</span>
         </SectionWrapper>
 
         <SectionWrapper delay={100}>

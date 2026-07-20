@@ -9,7 +9,7 @@ export const BUSINESS = {
   instagram: "cabritacafegarage",
   instagramUrl: "https://instagram.com/cabritacafegarage",
   googleMapsUrl: "https://maps.google.com/?q=Cabrita+Garage+Café+Av+Belgrano+1184+Mendoza",
-  pedidosYaUrl: "https://pedidosya.com.ar",
+  pedidosYaUrl: "https://www.pedidosya.com.ar/restaurantes/mendoza/cabrita-garage-cafe",
   whatsappMessage: "¡Hola Cabrita! Quiero hacer un pedido 🥐☕",
 } as const;
 
@@ -64,8 +64,8 @@ export const PRODUCTS = [
   },
   {
     id: "scones",
-    name: "Scones",
-    description: "Recién horneados, con esa textura única que solo la panadería artesanal logra.",
+    name: "Scon de Queso Keto",
+    description: "Scon de queso bajo en carbohidratos. Perfecto para acompañar tu café sin culpa.",
     badge: null,
     image: null,
   },
@@ -74,13 +74,6 @@ export const PRODUCTS = [
     name: "Cookies",
     description: "El maridaje ideal con un café recién hecho. Crocantes por fuera, suaves por dentro.",
     badge: null,
-    image: null,
-  },
-  {
-    id: "vegano",
-    name: "Opciones Veganas",
-    description: "Cookies, brownies y más opciones veganas y sin gluten. Para que nadie se quede sin probar.",
-    badge: "🌱 Sin gluten",
     image: null,
   },
 ] as const;
@@ -92,7 +85,6 @@ export const MENU_CATEGORIES = [
     items: [
       { name: "Espresso", description: "Café de especialidad en su forma más pura." },
       { name: "Latte", description: "Suave y cremoso, ideal para cualquier momento." },
-      { name: "Café filtrado", description: "Método de extracción lenta para sabores más complejos." },
     ],
   },
   {
@@ -102,7 +94,7 @@ export const MENU_CATEGORIES = [
       { name: "Medialunas", description: "Nuestro ícono. Hojaldradas, doradas, recién horneadas." },
       { name: "Chipás", description: "Pão de queijo artesanal. Probá el de Roquefort." },
       { name: "Croissants", description: "Mantequilla, laminado, perfecto." },
-      { name: "Scones", description: "Clásicos ingleses con un toque mendocino." },
+      { name: "Scon de Queso Keto", description: "Scon de queso bajo en carbohidratos. Ideal para cuidarse." },
       { name: "Cookies", description: "Crocantes por fuera, suaves por dentro." },
       { name: "Cinnamon Roll", description: "Rol de canela esponjoso con glaseado." },
     ],
@@ -113,24 +105,14 @@ export const MENU_CATEGORIES = [
     items: [
       { name: "Avocado Toast", description: "Palta, jamón y queso sobre pan artesanal." },
       { name: "Sándwich de Chipá", description: "Chipá relleno, una experiencia única." },
-      { name: "Tostadas", description: "Pan artesanal con toppings del día." },
-    ],
-  },
-  {
-    id: "veganos",
-    name: "Veganos & Sin Gluten",
-    items: [
-      { name: "Cookies Veganas", description: "Todo el sabor, sin ingredientes de origen animal." },
-      { name: "Brownies Veganos", description: "Húmedos, chocolatosos, 100% vegetales." },
-      { name: "Opciones sin gluten", description: "Consultá por nuestra variedad disponible." },
+      { name: "Tostado Jamón y Queso", description: "En masa madre. El clásico perfecto." },
     ],
   },
   {
     id: "deli",
     name: "Deli",
     items: [
-      { name: "Sándwich de Jamón y Pera", description: "Cuando hay pan disponible. Preguntanos antes." },
-      { name: "Ensalada Vegana", description: "Fresca, colorida, nutritiva." },
+      { name: "Sandwich de Jamón Crudo, Roquefort y Rúcula", description: "Pan artesanal, jamón crudo, roquefort y rúcula. $8.000." },
     ],
   },
 ] as const;
@@ -178,8 +160,8 @@ export const FAQS = [
     a: "Lunes a viernes de 09:00 a 20:30 hs. Sábados y domingos de 09:00 a 14:00 hs.",
   },
   {
-    q: "¿Tienen opciones veganas o sin gluten?",
-    a: "Sí, contamos con productos veganos y opciones sin gluten: cookies, brownies y más. Consultanos por la variedad disponible.",
+    q: "¿Tienen opciones veganas?",
+    a: "Tenemos opciones veganas disponibles. Consultanos por WhatsApp para conocer la variedad del día.",
   },
   {
     q: "¿Qué producto no puedo dejar de probar?",
@@ -202,8 +184,8 @@ export const FAQS = [
     a: "Sí, escribinos por WhatsApp para coordinar pedidos especiales y eventos.",
   },
   {
-    q: "¿El sándwich de jamón y pera está siempre?",
-    a: "No siempre, depende de la disponibilidad de pan. Te recomendamos consultar antes de ir.",
+    q: "¿El Sandwich de Jamón Crudo, Roquefort y Rúcula está siempre?",
+    a: "Sí, es parte de nuestro menú fijo. Consultanos por disponibilidad.",
   },
   {
     q: "¿Venden por mayor o para empresas?",
@@ -216,6 +198,26 @@ export const FAQS = [
   {
     q: "¿Cómo puedo dejar una reseña?",
     a: "Buscá 'Cabrita Garage Café' en Google y dejá tu opinión. ¡Nos ayuda un montón!",
+  },
+] as const;
+
+export const PRICE_RANGE = {
+  medialunasDesde: "$2.000",
+  cafeDesde: "$3.400",
+} as const;
+
+export const PROMOS = [
+  {
+    name: "Café mediano + 2 medialunas",
+    price: "$7.500",
+  },
+  {
+    name: "Café mediano + 2 chipá",
+    price: "$7.000",
+  },
+  {
+    name: "Café mediano + budín de banana",
+    price: "$7.000",
   },
 ] as const;
 

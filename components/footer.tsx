@@ -137,7 +137,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-cream/40">
           <p>© {new Date().getFullYear()} Cabrita Garage Café. Todos los derechos reservados.</p>
           <p>
-            Hecho con 🤎 para la comunidad mendocina.
+            Hecho con <span aria-hidden="true">🤎</span> para la comunidad mendocina.
           </p>
         </div>
       </div>
