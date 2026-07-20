@@ -94,7 +94,7 @@ export const MENU_CATEGORIES = [
       { name: "Medialunas", description: "Nuestro ícono. Hojaldradas, doradas, recién horneadas." },
       { name: "Chipás", description: "Pão de queijo artesanal. Probá el de Roquefort." },
       { name: "Croissants", description: "Mantequilla, laminado, perfecto." },
-      { name: "Scon de Queso Keto", description: "Scon de queso bajo en carbohidratos. Ideal para cuidarse." },
+      { name: "Scon de Queso Keto", description: "Scon de queso bajo en carbohidratos. Ideal para cuidarse. $5.000." },
       { name: "Cookies", description: "Crocantes por fuera, suaves por dentro." },
       { name: "Cinnamon Roll", description: "Rol de canela esponjoso con glaseado." },
     ],
@@ -105,7 +105,7 @@ export const MENU_CATEGORIES = [
     items: [
       { name: "Avocado Toast", description: "Palta, jamón y queso sobre pan artesanal." },
       { name: "Sándwich de Chipá", description: "Chipá relleno, una experiencia única." },
-      { name: "Tostado Jamón y Queso", description: "En masa madre. El clásico perfecto." },
+      { name: "Tostado Jamón y Queso", description: "En masa madre. El clásico perfecto. $6.000." },
     ],
   },
   {
@@ -213,10 +213,6 @@ export const PROMOS = [
   },
   {
     name: "Café mediano + 2 chipá",
-    price: "$7.000",
-  },
-  {
-    name: "Café mediano + budín de banana",
     price: "$7.000",
   },
 ] as const;
