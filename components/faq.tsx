@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { FAQS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
@@ -31,18 +32,21 @@ export function FAQ() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200"
+                  className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                   aria-expanded={isOpen}
                 >
                   <span className="font-medium text-brown text-sm md:text-base pr-4">
                     {faq.q}
                   </span>
-                  <ChevronDown
-                    size={18}
-                    className={`shrink-0 text-mustard transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <ChevronDown
+                      size={18}
+                      className="shrink-0 text-mustard"
+                    />
+                  </motion.div>
                 </button>
                 <div
                   className={`grid transition-all duration-400 ${
@@ -50,9 +54,14 @@ export function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 pb-5 text-sm text-iron/60 leading-relaxed">
+                    <motion.div
+                      className="px-6 pb-5 text-sm text-iron/60 leading-relaxed"
+                      initial={false}
+                      animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {faq.a}
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>

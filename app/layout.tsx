@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, DM_Sans } from "next/font/google";
 import { localBusinessSchema } from "@/lib/schema";
 import "./globals.css";
@@ -18,7 +18,16 @@ const dmSans = DM_Sans({
 
 const schema = localBusinessSchema();
 
+const baseUrl = "https://cabritagaragecafe-web.vercel.app";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#F5F0E6",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "Cabrita Garage Café | Las mejores medialunas y chipás de Mendoza",
   description:
     "Café de especialidad, chipás artesanales y panadería recién horneada en el centro de Mendoza. Take away y delivery. ¡Visitá nuestro garage!",
@@ -33,21 +42,29 @@ export const metadata: Metadata = {
     "take away mendoza",
   ],
   authors: [{ name: "Cabrita Garage Café" }],
-  metadataBase: new URL("https://cabritagaragecafe-web.vercel.app"),
   openGraph: {
     title: "Cabrita Garage Café — Café de especialidad en el corazón de Mendoza",
     description:
       "Medialunas, chipás y café de especialidad recién hecho. Conocé el garage que enamora al centro de Mendoza.",
-    url: "https://cabritagaragecafe-web.vercel.app",
+    url: baseUrl,
     siteName: "Cabrita Garage Café",
     locale: "es_AR",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Cabrita Garage Café — Café de especialidad en Mendoza",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cabrita Garage Café — Café de especialidad en Mendoza",
     description:
       "Medialunas, chipás y café de especialidad recién hecho. El garage que enamora al centro de Mendoza.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -60,6 +77,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: baseUrl,
+  },
 };
 
 export default function RootLayout({
@@ -70,7 +90,6 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${fraunces.variable} ${dmSans.variable}`}>
       <head>
-        <link rel="canonical" href="https://cabritagaragecafe-web.vercel.app" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

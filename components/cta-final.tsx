@@ -1,8 +1,14 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BUSINESS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
+import { Button } from "./ui/button";
 
 export function CtaFinal() {
+  const whatsappUrl = `https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`;
+
   return (
     <section className="py-24 md:py-32 bg-gradient-to-b from-cream to-cream-dark relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -11,7 +17,14 @@ export function CtaFinal() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
         <SectionWrapper>
-          <span className="text-5xl md:text-6xl mb-6 block" aria-hidden="true">🥐☕</span>
+          <motion.span
+            className="text-5xl md:text-6xl mb-6 block"
+            aria-hidden="true"
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          >
+            🥐☕
+          </motion.span>
         </SectionWrapper>
 
         <SectionWrapper delay={100}>
@@ -29,23 +42,22 @@ export function CtaFinal() {
         </SectionWrapper>
 
         <SectionWrapper delay={300} className="flex flex-wrap justify-center gap-4">
-          <a
+          <Button
             href={BUSINESS.googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-mustard text-white font-semibold px-8 py-4 rounded-full hover:bg-caramel transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 text-base"
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={18} />}
+            iconPosition="right"
           >
             Encontranos en Belgrano 1184
-            <ArrowRight size={18} />
-          </a>
-          <a
-            href={`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-brown font-semibold px-8 py-4 rounded-full hover:bg-cream-dark transition-all duration-300 shadow-sm hover:shadow-md border border-cream-dark text-base"
+          </Button>
+          <Button
+            href={whatsappUrl}
+            variant="secondary"
+            size="lg"
           >
             Pedí por WhatsApp
-          </a>
+          </Button>
         </SectionWrapper>
       </div>
     </section>

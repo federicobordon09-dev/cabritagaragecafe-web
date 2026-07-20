@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { PRODUCTS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
+import { staggerContainer, staggerItem, cardHover } from "@/lib/animations";
 
 const imageMap: Record<string, string> = {
   medialunas: "/img/imagen_medialunas.jpg",
@@ -51,12 +55,19 @@ export function ProductosEstrella() {
           </h2>
         </SectionWrapper>
 
-        <div className="grid md:grid-cols-3 gap-4 md:gap-5 auto-rows-[200px] md:auto-rows-[240px]">
-          {PRODUCTS.map((product, i) => (
-            <SectionWrapper
+        <motion.div
+          className="grid md:grid-cols-3 gap-4 md:gap-5 auto-rows-[200px] md:auto-rows-[240px]"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px 0px" }}
+        >
+          {PRODUCTS.map((product) => (
+            <motion.div
               key={product.id}
-              delay={i * 80}
+              variants={staggerItem}
               className={`group relative rounded-xl overflow-hidden bg-iron cursor-default ${sizes[product.id] || ""}`}
+              whileHover={cardHover}
             >
               <Image
                 src={imageMap[product.id] || ""}
@@ -82,9 +93,9 @@ export function ProductosEstrella() {
                   {product.description}
                 </p>
               </div>
-            </SectionWrapper>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

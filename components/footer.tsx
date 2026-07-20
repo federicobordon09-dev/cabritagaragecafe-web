@@ -1,4 +1,10 @@
+"use client";
+
 import { MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { BUSINESS, LOCATIONS, SCHEDULE } from "@/lib/data";
+import { SectionWrapper } from "./section-wrapper";
+import { BackToTop } from "./ui/back-to-top";
 
 function InstagramIcon({ size = 18, className }: { size?: number; className?: string }) {
   return (
@@ -9,8 +15,6 @@ function InstagramIcon({ size = 18, className }: { size?: number; className?: st
     </svg>
   );
 }
-import { BUSINESS, LOCATIONS, SCHEDULE } from "@/lib/data";
-import { SectionWrapper } from "./section-wrapper";
 
 const scheduleList = Object.values(SCHEDULE);
 
@@ -22,9 +26,18 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-5 py-16 md:py-20">
         <div className="grid md:grid-cols-4 gap-10 md:gap-8">
           <SectionWrapper className="md:col-span-1">
-            <h3 className="font-serif text-2xl font-semibold text-white mb-3">
-              Cabrita
-            </h3>
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                src="/img/logo_cabritagaragecafe.jpg"
+                alt="Cabrita Garage Café"
+                width={40}
+                height={40}
+                className="rounded-full ring-2 ring-mustard/20"
+              />
+              <h3 className="font-serif text-2xl font-semibold text-white">
+                Cabrita
+              </h3>
+            </div>
             <p className="text-sm text-cream/60 leading-relaxed">
               Café de especialidad, chipás artesanales y panadería recién horneada
               en el centro de Mendoza.
@@ -34,8 +47,8 @@ export function Footer() {
                 href={BUSINESS.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mustard transition-colors duration-300"
-                aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mustard transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-label="Instagram de Cabrita Garage Café"
               >
                 <InstagramIcon size={18} className="text-white" />
               </a>
@@ -64,7 +77,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${BUSINESS.phone}`}
-                  className="flex items-center gap-2 text-cream/60 hover:text-mustard transition-colors"
+                  className="flex items-center gap-2 text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <Phone size={14} className="shrink-0" />
                   {BUSINESS.phoneDisplay}
@@ -81,7 +94,7 @@ export function Footer() {
                   href={BUSINESS.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-cream/60 hover:text-mustard transition-colors"
+                  className="flex items-center gap-2 text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <InstagramIcon size={14} className="shrink-0" />
                   @{BUSINESS.instagram}
@@ -96,17 +109,17 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="#menu" className="text-cream/60 hover:text-mustard transition-colors">
+                <a href="#menu" className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Menú digital
                 </a>
               </li>
               <li>
-                <a href="#sucursales" className="text-cream/60 hover:text-mustard transition-colors">
+                <a href="#sucursales" className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Sucursales
                 </a>
               </li>
               <li>
-                <a href="#resenas" className="text-cream/60 hover:text-mustard transition-colors">
+                <a href="#resenas" className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Reseñas
                 </a>
               </li>
@@ -115,7 +128,7 @@ export function Footer() {
                   href={`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cream/60 hover:text-mustard transition-colors"
+                  className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   WhatsApp
                 </a>
@@ -125,7 +138,7 @@ export function Footer() {
                   href={BUSINESS.pedidosYaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cream/60 hover:text-mustard transition-colors"
+                  className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   PedidosYa
                 </a>
@@ -141,6 +154,8 @@ export function Footer() {
           </p>
         </div>
       </div>
+
+      <BackToTop />
     </footer>
   );
 }

@@ -3,8 +3,8 @@ import { Hero } from "@/components/hero";
 import { Historia } from "@/components/historia";
 import { ProductosEstrella } from "@/components/productos-estrella";
 import { MenuDigital } from "@/components/menu-digital";
-import { Sucursales } from "@/components/sucursales";
 import { Resenas } from "@/components/resenas";
+import { Sucursales } from "@/components/sucursales";
 import { Delivery } from "@/components/delivery";
 import { Eventos } from "@/components/eventos";
 import { FAQ } from "@/components/faq";
@@ -21,8 +21,8 @@ export default function Home() {
         <Historia />
         <ProductosEstrella />
         <MenuDigital />
-        <Sucursales />
         <Resenas />
+        <Sucursales />
         <Delivery />
         <Eventos />
         <FAQ />

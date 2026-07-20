@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { SectionWrapper } from "./section-wrapper";
 
@@ -6,13 +8,13 @@ export function Historia() {
     <section className="py-24 md:py-32 bg-white">
       <div className="max-w-6xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <SectionWrapper className="order-2 md:order-1">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-cream-dark/50 shadow-lg">
+          <SectionWrapper className="order-2 md:order-1" variant="scaleIn">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-cream-dark/50 shadow-lg group">
               <Image
                 src="/img/imagen_del_local.webp"
                 alt="Interior de Cabrita Garage Café — el garage convertido en cafetería"
                 fill
-                className="object-cover"
+                className="object-cover transition-all duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-iron/10 to-transparent" />
@@ -43,9 +45,7 @@ export function Historia() {
               <p>
                 En Cabrita creemos que el mejor café se disfruta sin apuro, que una
                 medialuna recién salida del horno puede cambiar tu día y que un espacio
-                chiquito puede tener el corazón más grande. Por eso nuestra vereda tiene
-                nombre propio: es el lugar donde la gente se encuentra, charla, comparte
-                y vuelve.
+                chiquito puede tener el corazón más grande.
               </p>
               <p className="font-medium text-brown">
                 Cabrita al servicio de la comunidad mendocina.{" "}

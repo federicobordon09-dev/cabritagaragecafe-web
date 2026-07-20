@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { ChevronDown, Tag } from "lucide-react";
 import { MENU_CATEGORIES, BUSINESS, PRICE_RANGE, PROMOS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
@@ -39,19 +40,20 @@ export function MenuDigital() {
               >
                 <button
                   onClick={() => toggle(category.id)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left bg-cream/50 hover:bg-cream transition-colors duration-200"
+                  className="w-full flex items-center justify-between px-6 py-5 text-left bg-cream/50 hover:bg-cream transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                   aria-expanded={isOpen}
                 >
                   <span className="font-serif text-xl font-semibold text-brown">
                     {category.name}
                   </span>
-                  <ChevronDown
-                    size={20}
-                    className={`text-mustard transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <ChevronDown size={20} className="text-mustard" />
+                  </motion.div>
                 </button>
+
                 <div
                   className={`grid transition-all duration-400 ${
                     isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
@@ -59,16 +61,23 @@ export function MenuDigital() {
                 >
                   <div className="overflow-hidden">
                     <div className="px-6 pb-5 space-y-3">
-                      {category.items.map((item) => (
-                        <div
+                      {category.items.map((item, i) => (
+                        <motion.div
                           key={item.name}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                          transition={{
+                            duration: 0.3,
+                            delay: isOpen ? i * 0.05 : 0,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           className="flex items-start justify-between gap-4 py-2 border-b border-cream-dark/30 last:border-0"
                         >
                           <div>
                             <span className="font-medium text-brown">{item.name}</span>
                             <p className="text-sm text-iron/50 mt-0.5">{item.description}</p>
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
@@ -108,7 +117,7 @@ export function MenuDigital() {
                   href={`https://wa.me/542617176679?text=${encodeURIComponent("¡Hola! Quería consultar por el menú 🙌")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
+                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                 >
                   WhatsApp
                 </a>{" "}
@@ -117,7 +126,7 @@ export function MenuDigital() {
                   href={BUSINESS.pedidosYaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors"
+                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                 >
                   PedidosYa
                 </a>

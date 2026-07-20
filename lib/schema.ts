@@ -1,5 +1,5 @@
 import type { BusinessSchema } from "./types";
-import { BUSINESS, LOCATIONS, SCHEDULE } from "./data";
+import { BUSINESS, LOCATIONS } from "./data";
 
 function openingHoursSpecification() {
   return [
