@@ -28,8 +28,7 @@ export function localBusinessSchema(): BusinessSchema {
     description: BUSINESS.description,
     url: "https://cabritagaragecafe-web.vercel.app",
     telephone: BUSINESS.phone,
-    email: "",
-    image: "https://cabritagaragecafe-web.vercel.app/og-image.jpg",
+    image: "https://cabritagaragecafe-web.vercel.app/img/imagen_del_local_fuera.webp",
     address: {
       "@type": "PostalAddress",
       streetAddress: verifiedLocation.address,
@@ -54,6 +53,6 @@ export function localBusinessSchema(): BusinessSchema {
     },
     sameAs: [BUSINESS.instagramUrl],
     currenciesAccepted: "ARS",
-    paymentAccepted: ["Cash", "Mercado Pago", "Credit Card"],
+    paymentAccepted: ["Efectivo", "Mercado Pago", "Tarjeta de Crédito/Débito"],
   };
 }

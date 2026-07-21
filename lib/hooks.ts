@@ -24,15 +24,36 @@ export function useActiveSection(sectionIds: string[]): string {
   const [active, setActive] = useState("");
 
   useEffect(() => {
+    const ratios = new Map<string, number>();
+    let rafId: number;
+
+    const updateActive = () => {
+      let bestId = "";
+      let bestRatio = 0;
+      for (const [id, ratio] of ratios) {
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          bestId = id;
+        }
+      }
+      setActive(bestId);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setActive(entry.target.id);
+            ratios.set(entry.target.id, entry.intersectionRatio);
+          } else {
+            ratios.delete(entry.target.id);
           }
         }
+        if (ratios.size > 0) {
+          cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(updateActive);
+        }
       },
-      { threshold: 0.3, rootMargin: "-80px 0px 0px 0px" }
+      { threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], rootMargin: "-80px 0px 0px 0px" }
     );
 
     const elements = new Map<string, Element>();
@@ -46,6 +67,7 @@ export function useActiveSection(sectionIds: string[]): string {
     }
 
     return () => {
+      cancelAnimationFrame(rafId);
       for (const el of elements.values()) {
         observer.unobserve(el);
       }

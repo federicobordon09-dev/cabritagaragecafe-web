@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/img/imagen_del_local_fuera.webp",
         width: 1200,
         height: 630,
         alt: "Cabrita Garage Café — Café de especialidad en Mendoza",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Cabrita Garage Café — Café de especialidad en Mendoza",
     description:
       "Medialunas, chipás y café de especialidad recién hecho. El garage que enamora al centro de Mendoza.",
-    images: ["/og-image.jpg"],
+    images: ["/img/imagen_del_local_fuera.webp"],
   },
   robots: {
     index: true,

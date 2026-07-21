@@ -1,3 +1,15 @@
+export type MenuItem = {
+  name: string;
+  description: string;
+  price?: string;
+};
+
+export type MenuCategory = {
+  id: string;
+  name: string;
+  items: readonly MenuItem[];
+};
+
 export type BusinessSchema = {
   "@context": string;
   "@type": string[];
@@ -5,7 +17,7 @@ export type BusinessSchema = {
   description: string;
   url: string;
   telephone: string;
-  email: string;
+  email?: string;
   image: string;
   address: {
     "@type": string;

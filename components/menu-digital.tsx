@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Tag } from "lucide-react";
-import { MENU_CATEGORIES, BUSINESS, PRICE_RANGE, PROMOS } from "@/lib/data";
+import { ChevronDown } from "lucide-react";
+import { MENU_CATEGORIES, BUSINESS, PRICE_RANGE } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
 
 export function MenuDigital() {
@@ -55,7 +55,7 @@ export function MenuDigital() {
                 </button>
 
                 <div
-                  className={`grid transition-all duration-400 ${
+                  className={`grid transition-all duration-500 ${
                     isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
@@ -63,7 +63,7 @@ export function MenuDigital() {
                     <div className="px-6 pb-5 space-y-3">
                       {category.items.map((item, i) => (
                         <motion.div
-                          key={item.name}
+                          key={`${category.id}-${item.name}-${i}`}
                           initial={{ opacity: 0, y: 10 }}
                           animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                           transition={{
@@ -73,8 +73,13 @@ export function MenuDigital() {
                           }}
                           className="flex items-start justify-between gap-4 py-2 border-b border-cream-dark/30 last:border-0"
                         >
-                          <div>
-                            <span className="font-medium text-brown">{item.name}</span>
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between gap-4">
+                              <span className="font-medium text-brown">{item.name}</span>
+                              {"price" in item && item.price && (
+                                <span className="shrink-0 font-semibold text-mustard text-sm">{item.price}</span>
+                              )}
+                            </div>
                             <p className="text-sm text-iron/50 mt-0.5">{item.description}</p>
                           </div>
                         </motion.div>
@@ -89,47 +94,28 @@ export function MenuDigital() {
           <div className="pt-8 space-y-6">
             <div className="text-center">
               <p className="text-sm text-iron/50">
-                Medialunas desde <span className="font-semibold text-brown">{PRICE_RANGE.medialunasDesde}</span>
-                {" · "}
                 Café desde <span className="font-semibold text-brown">{PRICE_RANGE.cafeDesde}</span>
               </p>
-            </div>
-
-            <div className="bg-mustard/5 border border-mustard/10 rounded-xl p-5 md:p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <Tag size={16} className="text-mustard" />
-                <span className="text-sm font-semibold text-brown uppercase tracking-wider">Promos</span>
-              </div>
-              <div className="space-y-3">
-                {PROMOS.map((promo) => (
-                  <div key={promo.name} className="flex justify-between items-center text-sm">
-                    <span className="text-iron/70">{promo.name}</span>
-                    <span className="font-semibold text-mustard">{promo.price}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="text-center">
               <p className="text-sm text-iron/50">
                 Escribinos por{" "}
-                <a
-                  href={`https://wa.me/542617176679?text=${encodeURIComponent("¡Hola! Quería consultar por el menú 🙌")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => window.open(`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent("¡Hola! Quería consultar por el menú 🙌")}`, "_blank", "noopener,noreferrer")}
                   className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                 >
                   WhatsApp
-                </a>{" "}
+                </button>{" "}
                 o pedí por{" "}
-                <a
-                  href={BUSINESS.pedidosYaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => window.open(BUSINESS.pedidosYaUrl, "_blank", "noopener,noreferrer")}
                   className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                 >
                   PedidosYa
-                </a>
+                </button>
                 .
               </p>
             </div>

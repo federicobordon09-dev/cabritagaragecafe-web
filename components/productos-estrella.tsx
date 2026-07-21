@@ -10,7 +10,7 @@ const imageMap: Record<string, string> = {
   medialunas: "/img/imagen_medialunas.jpg",
   chipas: "/img/imagen_chipa.jpg",
   cafe: "/img/imagen_cafe.webp",
-  scones: "/img/imagen_sconne_creo.webp",
+  alfajor: "/img/imagen_sconne_creo.webp",
   cookies: "/img/imagenes_cokees.jpg",
 };
 
@@ -18,7 +18,7 @@ const fallbackEmoji: Record<string, string> = {
   medialunas: "🥐",
   chipas: "🧀",
   cafe: "☕",
-  scones: "🧀",
+  alfajor: "🔵",
   cookies: "🍪",
 };
 
@@ -26,7 +26,7 @@ const sizes: Record<string, string> = {
   medialunas: "md:col-span-2 md:row-span-2",
   chipas: "md:col-span-1 md:row-span-2",
   cafe: "md:col-span-1 md:row-span-1",
-  scones: "md:col-span-1 md:row-span-1",
+  alfajor: "md:col-span-1 md:row-span-1",
   cookies: "md:col-span-1 md:row-span-1",
 };
 

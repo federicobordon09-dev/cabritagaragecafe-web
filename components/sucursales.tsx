@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { Clock, MessageCircle, MapPin } from "lucide-react";
 import { LOCATIONS, SCHEDULE, BUSINESS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
 import { staggerContainer, staggerItem } from "@/lib/animations";
@@ -39,14 +39,14 @@ export function Sucursales() {
                 className="w-11 h-11 rounded-xl bg-mustard/10 flex items-center justify-center shrink-0"
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(200, 151, 90, 0.2)" }}
               >
-                <MapPin size={20} className="text-mustard" />
+                <Clock size={20} className="text-mustard" />
               </motion.div>
               <div>
                 <h3 className="font-serif text-xl font-semibold text-brown">
-                  {verified.address}
+                  Horarios
                 </h3>
                 <p className="text-sm text-iron/50">
-                  {verified.city}, {verified.province}
+                  {verified.address}, {verified.city}
                 </p>
               </div>
             </div>
@@ -60,15 +60,23 @@ export function Sucursales() {
               ))}
             </div>
 
-            <a
-              href={BUSINESS.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-mustard hover:text-caramel transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
-            >
-              <MapPin size={14} />
-              Abrir en Google Maps
-            </a>
+            <div className="mt-5 p-4 rounded-xl bg-mustard/5 border border-mustard/10">
+              <div className="flex items-center gap-2 mb-2">
+                <MessageCircle size={16} className="text-mustard" />
+                <span className="text-sm font-semibold text-brown">Sucursal Beltrán</span>
+              </div>
+              <p className="text-sm text-iron/60">
+                Consultanos por{" "}
+                <button
+                  type="button"
+                  onClick={() => window.open(`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}`, "_blank", "noopener,noreferrer")}
+                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
+                >
+                  WhatsApp
+                </button>{" "}
+                para horarios y más info de nuestra sucursal en Beltrán y Juan B. Justo.
+              </p>
+            </div>
           </motion.div>
 
           <motion.div
@@ -76,33 +84,42 @@ export function Sucursales() {
             className="bg-white rounded-2xl p-7 md:p-8 border border-cream-dark/60 h-full group hover:border-mustard/30 transition-all duration-500"
           >
             <div className="flex items-start gap-4 mb-5">
-              <div className="w-11 h-11 rounded-xl bg-mustard/10 flex items-center justify-center shrink-0">
+              <motion.div
+                className="w-11 h-11 rounded-xl bg-mustard/10 flex items-center justify-center shrink-0"
+                whileHover={{ scale: 1.1, backgroundColor: "rgba(200, 151, 90, 0.2)" }}
+              >
                 <MapPin size={20} className="text-mustard" />
-              </div>
+              </motion.div>
               <div>
                 <h3 className="font-serif text-xl font-semibold text-brown">
-                  Sucursal Beltrán
+                  {verified.address}
                 </h3>
                 <p className="text-sm text-iron/50">
-                  Consultanos por WhatsApp para más info
+                  {verified.city}, {verified.province}
                 </p>
               </div>
             </div>
 
-            <div className="mt-5 p-4 rounded-xl bg-mustard/5 border border-mustard/10">
-              <p className="text-sm text-iron/60">
-                Consultanos por{" "}
-                <a
-                  href={`https://wa.me/542617176679`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
-                >
-                  WhatsApp
-                </a>{" "}
-                para horarios y más info.
-              </p>
+            <div className="rounded-xl overflow-hidden border border-cream-dark/30">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-68.8519%2C-32.8891%2C-68.8475%2C-32.8865&amp;layer=mapnik&amp;marker=-32.8878%2C-68.8497"
+                width="100%"
+                height="220"
+                className="w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                title="Mapa de Cabrita Garage Café en Av. Belgrano 1184"
+              />
             </div>
+
+            <button
+              type="button"
+              onClick={() => window.open(BUSINESS.googleMapsUrl, "_blank", "noopener,noreferrer")}
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-mustard hover:text-caramel transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
+            >
+              <MapPin size={14} />
+              Abrir en Google Maps
+            </button>
           </motion.div>
         </motion.div>
       </div>

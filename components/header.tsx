@@ -10,12 +10,12 @@ import { BUSINESS } from "@/lib/data";
 const NAV_ITEMS = [
   { label: "Inicio", href: "#hero" },
   { label: "Menú", href: "#menu" },
-  { label: "Sucursales", href: "#sucursales" },
   { label: "Reseñas", href: "#resenas" },
+  { label: "Sucursales", href: "#sucursales" },
   { label: "Contacto", href: "#footer" },
 ];
 
-const SECTION_IDS = ["hero", "menu", "sucursales", "resenas", "footer"];
+const SECTION_IDS = ["hero", "menu", "resenas", "sucursales", "footer"];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,9 +49,9 @@ export function Header() {
       }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 h-16 md:h-20">
-        <a
-          href="#hero"
-          onClick={(e) => { e.preventDefault(); handleNav("#hero"); }}
+        <button
+          type="button"
+          onClick={() => handleNav("#hero")}
           className="flex items-center gap-2.5 group"
           aria-label="Ir al inicio"
         >
@@ -65,17 +65,17 @@ export function Header() {
           <span className="font-serif text-lg md:text-xl font-semibold text-brown tracking-tight">
             Cabrita
           </span>
-        </a>
+        </button>
 
         <nav className="hidden md:flex items-center gap-1" role="navigation" aria-label="Navegación principal">
           {NAV_ITEMS.map((item) => {
             const sectionId = item.href.replace("#", "");
             const isActive = active === sectionId;
             return (
-              <a
+              <button
                 key={item.href}
-                href={item.href}
-                onClick={(e) => { e.preventDefault(); handleNav(item.href); }}
+                type="button"
+                onClick={() => handleNav(item.href)}
                 className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-300 ${
                   isActive
                     ? "text-brown"
@@ -91,18 +91,17 @@ export function Header() {
                     style={{ backgroundColor: "rgba(200, 151, 90, 0.08)" }}
                   />
                 )}
-              </a>
+              </button>
             );
           })}
-          <a
-            href={`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => window.open(`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`, "_blank", "noopener,noreferrer")}
             className="ml-3 inline-flex items-center gap-1.5 bg-mustard text-white text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-caramel transition-all duration-300 shadow-sm hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
           >
             <MessageCircle size={16} />
             <span>WhatsApp</span>
-          </a>
+          </button>
         </nav>
 
         <button
@@ -125,22 +124,21 @@ export function Header() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             {NAV_ITEMS.map((item, i) => (
-              <motion.a
+              <motion.button
                 key={item.href}
-                href={item.href}
-                onClick={(e) => { e.preventDefault(); handleNav(item.href); }}
+                type="button"
+                onClick={() => handleNav(item.href)}
                 className="text-2xl font-serif text-brown hover:text-mustard transition-colors"
                 initial={reduced ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduced ? {} : { delay: 0.05 * i, duration: 0.4 }}
               >
                 {item.label}
-              </motion.a>
+              </motion.button>
             ))}
-            <motion.a
-              href={`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              type="button"
+              onClick={() => window.open(`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`, "_blank", "noopener,noreferrer")}
               className="mt-4 inline-flex items-center gap-2 bg-mustard text-white text-lg font-semibold px-8 py-3.5 rounded-full hover:bg-caramel transition-all duration-300"
               initial={reduced ? { opacity: 1 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -148,7 +146,7 @@ export function Header() {
             >
               <MessageCircle size={20} />
               WhatsApp
-            </motion.a>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

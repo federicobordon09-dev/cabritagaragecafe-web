@@ -123,14 +123,13 @@ export function Resenas() {
           </div>
 
           <div className="text-center mt-8">
-            <a
-              href="https://search.google.com/local/reviews?q=Cabrita+Garage+Café+Belgrano+1184+Mendoza"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => window.open("https://search.google.com/local/reviews?q=Cabrita+Garage+Café+Belgrano+1184+Mendoza", "_blank", "noopener,noreferrer")}
               className="inline-flex items-center gap-2 text-sm font-medium text-mustard hover:text-caramel transition-colors underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
             >
               Dejanos tu reseña en Google
-            </a>
+            </button>
           </div>
         </SectionWrapper>
       </div>

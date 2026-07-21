@@ -60,14 +60,13 @@ export function Eventos() {
         <SectionWrapper delay={200} className="text-center mt-10">
           <p className="text-sm text-iron/50">
             Seguinos en{" "}
-            <a
-              href={BUSINESS.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => window.open(BUSINESS.instagramUrl, "_blank", "noopener,noreferrer")}
               className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
             >
               Instagram
-            </a>{" "}
+            </button>{" "}
             para no perderte ninguna novedad.
           </p>
         </SectionWrapper>

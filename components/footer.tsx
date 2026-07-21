@@ -16,6 +16,15 @@ function InstagramIcon({ size = 18, className }: { size?: number; className?: st
   );
 }
 
+function openUrl(url: string) {
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function scrollTo(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+}
+
 const scheduleList = Object.values(SCHEDULE);
 
 export function Footer() {
@@ -43,15 +52,14 @@ export function Footer() {
               en el centro de Mendoza.
             </p>
             <div className="flex gap-3 mt-5">
-              <a
-                href={BUSINESS.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => openUrl(BUSINESS.instagramUrl)}
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mustard transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 aria-label="Instagram de Cabrita Garage Café"
               >
                 <InstagramIcon size={18} className="text-white" />
-              </a>
+              </button>
             </div>
           </SectionWrapper>
 
@@ -75,13 +83,14 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
-                  href={`tel:${BUSINESS.phone}`}
+                <button
+                  type="button"
+                  onClick={() => window.location.href = `tel:${BUSINESS.phone}`}
                   className="flex items-center gap-2 text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <Phone size={14} className="shrink-0" />
                   {BUSINESS.phoneDisplay}
-                </a>
+                </button>
               </li>
               <li className="flex items-start gap-2 text-cream/60">
                 <MapPin size={14} className="shrink-0 mt-0.5" />
@@ -90,15 +99,14 @@ export function Footer() {
                 </span>
               </li>
               <li>
-                <a
-                  href={BUSINESS.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openUrl(BUSINESS.instagramUrl)}
                   className="flex items-center gap-2 text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <InstagramIcon size={14} className="shrink-0" />
                   @{BUSINESS.instagram}
-                </a>
+                </button>
               </li>
             </ul>
           </SectionWrapper>
@@ -109,39 +117,49 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="#menu" className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <button
+                  type="button"
+                  onClick={() => scrollTo("menu")}
+                  className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
                   Menú digital
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#sucursales" className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <button
+                  type="button"
+                  onClick={() => scrollTo("sucursales")}
+                  className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
                   Sucursales
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#resenas" className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                <button
+                  type="button"
+                  onClick={() => scrollTo("resenas")}
+                  className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
                   Reseñas
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href={`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openUrl(`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}`)}
                   className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   WhatsApp
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href={BUSINESS.pedidosYaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openUrl(BUSINESS.pedidosYaUrl)}
                   className="text-cream/60 hover:text-mustard transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   PedidosYa
-                </a>
+                </button>
               </li>
             </ul>
           </SectionWrapper>

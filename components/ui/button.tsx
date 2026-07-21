@@ -1,29 +1,19 @@
 "use client";
 
-import { forwardRef } from "react";
+import { forwardRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { buttonHover, buttonTap } from "@/lib/animations";
 
-type ButtonBase = {
+type ButtonProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
   icon?: React.ReactNode;
   iconPosition?: "left" | "right";
-};
-
-type ButtonAsButton = ButtonBase &
-  Omit<React.ComponentPropsWithoutRef<typeof motion.button>, keyof ButtonBase> & {
-    href?: undefined;
-  };
-
-type ButtonAsLink = ButtonBase &
-  Omit<React.ComponentPropsWithoutRef<typeof motion.a>, keyof ButtonBase> & {
-    href: string;
-  };
-
-type ButtonProps = ButtonAsButton | ButtonAsLink;
+  href?: string;
+  openInNewTab?: boolean;
+} & Omit<React.ComponentPropsWithoutRef<typeof motion.button>, "children" | "className">;
 
 const variantStyles: Record<string, string> = {
   primary:
@@ -40,7 +30,7 @@ const sizeStyles: Record<string, string> = {
   lg: "text-base px-8 py-4 gap-2.5",
 };
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     const {
       children,
@@ -49,49 +39,41 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       className = "",
       icon,
       iconPosition = "left",
+      href,
+      openInNewTab = true,
       style,
       ...rest
-    } = props as ButtonBase & Record<string, unknown>;
+    } = props;
 
     const classes = `relative inline-flex items-center justify-center font-semibold rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
-    const content = (
-      <>
-        {icon && iconPosition === "left" && icon}
-        <span>{children}</span>
-        {icon && iconPosition === "right" && icon}
-      </>
-    );
-
-    if ("href" in rest && (rest as Record<string, unknown>).href) {
-      const { href, target, rel, ...anchorRest } = rest as Record<string, unknown>;
-      return (
-        <motion.a
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          href={href as string}
-          target={(target as string) || undefined}
-          rel={(rel as string) || undefined}
-          className={classes}
-          whileHover={buttonHover}
-          whileTap={buttonTap}
-          style={style as React.CSSProperties}
-          {...(anchorRest as React.ComponentPropsWithoutRef<typeof motion.a>)}
-        >
-          {content}
-        </motion.a>
-      );
-    }
+    const handleClick = useCallback(() => {
+      if (href) {
+        if (href.startsWith("#")) {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        } else if (openInNewTab) {
+          window.open(href, "_blank", "noopener,noreferrer");
+        } else {
+          window.location.href = href;
+        }
+      }
+    }, [href, openInNewTab]);
 
     return (
       <motion.button
-        ref={ref as React.Ref<HTMLButtonElement>}
+        ref={ref}
+        type="button"
         className={classes}
         whileHover={buttonHover}
         whileTap={buttonTap}
         style={style as React.CSSProperties}
+        onClick={handleClick}
         {...(rest as React.ComponentPropsWithoutRef<typeof motion.button>)}
       >
-        {content}
+        {icon && iconPosition === "left" && icon}
+        <span>{children}</span>
+        {icon && iconPosition === "right" && icon}
       </motion.button>
     );
   }
