@@ -10,7 +10,7 @@ const imageMap: Record<string, string> = {
   medialunas: "/img/imagen_medialunas.jpg",
   chipas: "/img/imagen_chipa.jpg",
   cafe: "/img/imagen_cafe.webp",
-  alfajor: "/img/imagen_sconne_creo.webp",
+  alfajor: "/img/imagen_alfajor_de_pistacho.webp",
   cookies: "/img/imagenes_cokees.jpg",
 };
 

@@ -1,21 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { MENU_CATEGORIES, BUSINESS, PRICE_RANGE } from "@/lib/data";
+import { ChevronDown, ShoppingCart, Coffee, Wine, Sparkles, Grid3X3, Sandwich, Cake, Package, CupSoda } from "lucide-react";
+import { MENU_CATEGORIES, BUSINESS } from "@/lib/data";
 import { SectionWrapper } from "./section-wrapper";
+import { staggerContainer, staggerItem } from "@/lib/animations";
+
+const categoryIcons: Record<string, React.ElementType> = {
+  cafes: Coffee,
+  bebidas: Wine,
+  otros: CupSoda,
+  extras: Sparkles,
+  promos: Grid3X3,
+  panaderia: Package,
+  sandwiches: Sandwich,
+  pasteleria: Cake,
+  mayorista: Package,
+};
+
+const categoryEmojis: Record<string, string> = {
+  cafes: "☕",
+  bebidas: "🍹",
+  otros: "🧃",
+  extras: "✨",
+  promos: "🔥",
+  panaderia: "🥖",
+  sandwiches: "🥪",
+  pasteleria: "🍰",
+  mayorista: "📦",
+};
+
+function buildWhatsAppUrl(itemName: string, categoryName: string) {
+  const phone = BUSINESS.phone.replace(/\D/g, "");
+  const message = encodeURIComponent(
+    `¡Hola Cabrita! Quiero pedir:\n- 1 × ${itemName} (${categoryName})\n\n📍 Retiro en local`
+  );
+  return `https://wa.me/${phone}?text=${message}`;
+}
 
 export function MenuDigital() {
-  const [openId, setOpenId] = useState<string | null>("cafes");
+  const [openId, setOpenId] = useState<string | null>("promos");
 
-  const toggle = (id: string) => {
-    setOpenId(openId === id ? null : id);
-  };
+  const toggle = useCallback((id: string) => {
+    setOpenId((prev) => (prev === id ? null : id));
+  }, []);
 
   return (
     <section id="menu" className="py-24 md:py-32 bg-white">
-      <div className="max-w-3xl mx-auto px-5">
+      <div className="max-w-4xl mx-auto px-5">
         <SectionWrapper className="text-center mb-16">
           <p className="text-sm font-semibold text-mustard uppercase tracking-widest mb-4">
             Menú digital
@@ -25,27 +58,48 @@ export function MenuDigital() {
             <span className="text-mustard">con amor</span>
           </h2>
           <p className="text-iron/60 mt-4 max-w-md mx-auto">
-            Productos de estación y disponibilidad variable. Consultanos por lo que no
-            encontrás acá.
+            Tocá la categoría para ver los productos. Pedí directo por WhatsApp desde acá.
           </p>
         </SectionWrapper>
 
-        <SectionWrapper className="space-y-3">
+        <motion.div
+          className="space-y-3"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px 0px" }}
+        >
           {MENU_CATEGORIES.map((category) => {
             const isOpen = openId === category.id;
+            const Icon = categoryIcons[category.id] || Package;
+
             return (
-              <div
+              <motion.div
                 key={category.id}
-                className="rounded-xl border border-cream-dark/60 overflow-hidden transition-all duration-300 hover:border-mustard/30"
+                variants={staggerItem}
+                className="rounded-2xl border border-cream-dark/60 overflow-hidden transition-all duration-300 hover:border-mustard/20 bg-white"
               >
                 <button
+                  type="button"
                   onClick={() => toggle(category.id)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left bg-cream/50 hover:bg-cream transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
+                  className="w-full flex items-center justify-between px-5 md:px-7 py-4 md:py-5 text-left bg-cream/40 hover:bg-cream transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-serif text-xl font-semibold text-brown">
-                    {category.name}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl md:text-2xl" aria-hidden="true">
+                      {categoryEmojis[category.id] || "📋"}
+                    </span>
+                    <div>
+                      <span className="font-serif text-lg md:text-xl font-semibold text-brown">
+                        {category.name}
+                      </span>
+                      {!isOpen && (
+                        <span className="text-xs text-iron/40 ml-2">
+                          {category.items.length} productos
+                        </span>
+                      )}
+                    </div>
+                  </div>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -60,66 +114,58 @@ export function MenuDigital() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 pb-5 space-y-3">
+                    <div className="px-5 md:px-7 pb-4 md:pb-5 space-y-1">
                       {category.items.map((item, i) => (
                         <motion.div
                           key={`${category.id}-${item.name}-${i}`}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
                           transition={{
-                            duration: 0.3,
-                            delay: isOpen ? i * 0.05 : 0,
+                            duration: 0.25,
+                            delay: isOpen ? Math.min(i * 0.02, 0.3) : 0,
                             ease: [0.22, 1, 0.36, 1],
                           }}
-                          className="flex items-start justify-between gap-4 py-2 border-b border-cream-dark/30 last:border-0"
+                          className="flex items-center gap-3 py-2.5 border-b border-cream-dark/20 last:border-0 group/item"
                         >
-                          <div className="flex-1">
-                            <div className="flex items-start justify-between gap-4">
-                              <span className="font-medium text-brown">{item.name}</span>
-                              {"price" in item && item.price && (
-                                <span className="shrink-0 font-semibold text-mustard text-sm">{item.price}</span>
-                              )}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between gap-3">
+                              <span className="font-medium text-brown text-sm md:text-base leading-snug">
+                                {item.name}
+                              </span>
+                              <span className="shrink-0 font-semibold text-mustard text-sm md:text-base tabular-nums">
+                                {item.price}
+                              </span>
                             </div>
-                            <p className="text-sm text-iron/50 mt-0.5">{item.description}</p>
+                            {item.description && (
+                              <p className="text-xs md:text-sm text-iron/50 mt-0.5 leading-relaxed pr-2">
+                                {item.description}
+                              </p>
+                            )}
                           </div>
+
+                          <button
+                            type="button"
+                            onClick={() => window.open(buildWhatsAppUrl(item.name, category.name), "_blank", "noopener,noreferrer")}
+                            className="shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-full bg-mustard/10 hover:bg-mustard text-mustard hover:text-white flex items-center justify-center transition-all duration-200 opacity-0 group-hover/item:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
+                            aria-label={`Pedir ${item.name} por WhatsApp`}
+                            title="Pedir por WhatsApp"
+                          >
+                            <ShoppingCart size={14} className="md:w-[15px] md:h-[15px]" />
+                          </button>
                         </motion.div>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
+        </motion.div>
 
-          <div className="pt-8 space-y-6">
-            <div className="text-center">
-              <p className="text-sm text-iron/50">
-                Café desde <span className="font-semibold text-brown">{PRICE_RANGE.cafeDesde}</span>
-              </p>
-            </div>
-
-            <div className="text-center">
-              <p className="text-sm text-iron/50">
-                Escribinos por{" "}
-                <button
-                  type="button"
-                  onClick={() => window.open(`https://wa.me/${BUSINESS.phone.replace(/\D/g, "")}?text=${encodeURIComponent("¡Hola! Quería consultar por el menú 🙌")}`, "_blank", "noopener,noreferrer")}
-                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
-                >
-                  WhatsApp
-                </button>{" "}
-                o pedí por{" "}
-                <button
-                  type="button"
-                  onClick={() => window.open(BUSINESS.pedidosYaUrl, "_blank", "noopener,noreferrer")}
-                  className="text-mustard font-medium hover:text-caramel underline underline-offset-4 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard"
-                >
-                  PedidosYa
-                </button>
-                .
-              </p>
-            </div>
-          </div>
+        <SectionWrapper delay={200} className="text-center mt-10">
+          <p className="text-sm text-iron/50">
+            Los precios pueden variar sin previo aviso. Productos de estación y disponibilidad variable.
+          </p>
         </SectionWrapper>
       </div>
     </section>

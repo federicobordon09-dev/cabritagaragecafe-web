@@ -102,13 +102,14 @@ export function Sucursales() {
 
             <div className="rounded-xl overflow-hidden border border-cream-dark/30">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-68.8519%2C-32.8891%2C-68.8475%2C-32.8865&amp;layer=mapnik&amp;marker=-32.8878%2C-68.8497"
+                src="https://maps.google.com/maps?q=Cabrita+Garage+Caf%C3%A9+Av+Belgrano+1184+Mendoza&output=embed"
                 width="100%"
                 height="220"
                 className="w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 title="Mapa de Cabrita Garage Café en Av. Belgrano 1184"
+                allowFullScreen
               />
             </div>
 
