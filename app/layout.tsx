@@ -42,6 +42,14 @@ export const metadata: Metadata = {
     "take away mendoza",
   ],
   authors: [{ name: "Cabrita Garage Café" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "Cabrita Garage Café — Café de especialidad en el corazón de Mendoza",
     description:
