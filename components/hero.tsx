@@ -133,7 +133,7 @@ export function Hero() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-cream-dark/50 shadow-xl">
               <Image
                 src="/img/imagen_del_local_fuera.webp"
-                alt="Fachada de Cabrita Garage Café en Av. Belgrano 1184"
+                alt="Fachada de Cabrita Café Garage en Av. Belgrano 1184"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 0px, 50vw"

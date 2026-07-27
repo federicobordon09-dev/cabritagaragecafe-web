@@ -108,7 +108,7 @@ export function Sucursales() {
                 className="w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer"
-                title="Mapa de Cabrita Garage Café en Av. Belgrano 1184"
+                title="Mapa de Cabrita Café Garage en Av. Belgrano 1184"
                 allowFullScreen
               />
             </div>

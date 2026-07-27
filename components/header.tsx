@@ -76,7 +76,7 @@ export function Header() {
         >
           <Image
             src="/img/logo_cabritagaragecafe.jpg"
-            alt="Cabrita Garage Café"
+            alt="Cabrita Café Garage"
             width={36}
             height={36}
             className="rounded-full object-cover ring-2 ring-mustard/20 group-hover:ring-mustard/40 transition-all duration-300"

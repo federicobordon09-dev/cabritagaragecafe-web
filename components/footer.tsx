@@ -38,7 +38,7 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-3">
               <Image
                 src="/img/logo_cabritagaragecafe.jpg"
-                alt="Cabrita Garage Café"
+                alt="Cabrita Café Garage"
                 width={40}
                 height={40}
                 className="rounded-full ring-2 ring-mustard/20"
@@ -56,7 +56,7 @@ export function Footer() {
                 type="button"
                 onClick={() => openUrl(BUSINESS.instagramUrl)}
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mustard transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                aria-label="Instagram de Cabrita Garage Café"
+                aria-label="Instagram de Cabrita Café Garage"
               >
                 <InstagramIcon size={18} className="text-white" />
               </button>
@@ -166,7 +166,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-cream/40">
-          <p>© {new Date().getFullYear()} Cabrita Garage Café. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Cabrita Café Garage. Todos los derechos reservados.</p>
           <p>
             Hecho con <span aria-hidden="true">🤎</span> para la comunidad mendocina.
           </p>

@@ -12,7 +12,7 @@ export function Historia() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-cream-dark/50 shadow-lg group">
               <Image
                 src="/img/imagen_del_local.webp"
-                alt="Interior de Cabrita Garage Café — el garage convertido en cafetería"
+                alt="Interior de Cabrita Café Garage — el garage convertido en cafetería"
                 fill
                 className="object-cover transition-all duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"

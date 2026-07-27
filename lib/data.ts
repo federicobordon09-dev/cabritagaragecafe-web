@@ -1,5 +1,5 @@
 export const BUSINESS = {
-  name: "Cabrita Garage Café",
+  name: "Cabrita Café Garage",
   shortName: "Cabrita",
   tagline: "El garage de las mejores medialunas de Mendoza",
   description:
@@ -15,7 +15,7 @@ export const BUSINESS = {
 
 export const LOCATIONS = [
   {
-    name: "Cabrita Garage Café — Belgrano",
+    name: "Cabrita Café Garage — Belgrano",
     address: "Av. Belgrano 1184",
     city: "Ciudad de Mendoza",
     province: "Mendoza",
@@ -24,7 +24,7 @@ export const LOCATIONS = [
     isVerified: true,
   },
   {
-    name: "Cabrita Garage Café — Beltrán",
+    name: "Cabrita Café Garage — Beltrán",
     address: "Beltrán y Juan B. Justo",
     city: "Mendoza",
     province: "Mendoza",
@@ -322,7 +322,7 @@ export const REVIEWS = [
 
 export const FAQS = [
   {
-    q: "¿Dónde queda Cabrita Garage Café?",
+    q: "¿Dónde queda Cabrita Café Garage?",
     a: "Estamos en Av. Belgrano 1184, Ciudad de Mendoza. También tenemos sucursal en Beltrán y Juan B. Justo.",
   },
   {
@@ -363,7 +363,7 @@ export const FAQS = [
   },
   {
     q: "¿Cómo puedo dejar una reseña?",
-    a: "Buscá 'Cabrita Garage Café' en Google y dejá tu opinión. ¡Nos ayuda un montón!",
+    a: "Buscá 'Cabrita Café Garage' en Google y dejá tu opinión. ¡Nos ayuda un montón!",
   },
 ] as const;
 

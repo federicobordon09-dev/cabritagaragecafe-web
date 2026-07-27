@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Cabrita Garage Café | Las mejores medialunas y chipás de Mendoza",
+  title: "Cabrita Café Garage | Las mejores medialunas y chipás de Mendoza",
   description:
     "Café de especialidad, chipás artesanales y panadería recién horneada en el centro de Mendoza. Take away y delivery. ¡Visitá nuestro garage!",
   keywords: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "cabrita café mendoza",
     "take away mendoza",
   ],
-  authors: [{ name: "Cabrita Garage Café" }],
+  authors: [{ name: "Cabrita Café Garage" }],
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },
@@ -51,11 +51,11 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "Cabrita Garage Café — Café de especialidad en el corazón de Mendoza",
+    title: "Cabrita Café Garage — Café de especialidad en el corazón de Mendoza",
     description:
       "Medialunas, chipás y café de especialidad recién hecho. Conocé el garage que enamora al centro de Mendoza.",
     url: baseUrl,
-    siteName: "Cabrita Garage Café",
+    siteName: "Cabrita Café Garage",
     locale: "es_AR",
     type: "website",
     images: [
@@ -63,13 +63,13 @@ export const metadata: Metadata = {
         url: "/img/imagen_del_local_fuera.webp",
         width: 1200,
         height: 630,
-        alt: "Cabrita Garage Café — Café de especialidad en Mendoza",
+        alt: "Cabrita Café Garage — Café de especialidad en Mendoza",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cabrita Garage Café — Café de especialidad en Mendoza",
+    title: "Cabrita Café Garage — Café de especialidad en Mendoza",
     description:
       "Medialunas, chipás y café de especialidad recién hecho. El garage que enamora al centro de Mendoza.",
     images: ["/img/imagen_del_local_fuera.webp"],
