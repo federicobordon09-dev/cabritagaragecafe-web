@@ -23,7 +23,7 @@ export function CtaFinal() {
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
           >
-            🥐☕
+            🧀🍞
           </motion.span>
         </SectionWrapper>
 
